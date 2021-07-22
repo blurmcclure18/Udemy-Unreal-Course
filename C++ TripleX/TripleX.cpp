@@ -2,18 +2,21 @@
 
 int main()
 {
+    //This prints out the first message the player sees
     std::cout << "You need to Kill the Arcane Wizard in his tower...\n";
     std::cout << "Crack these Mysterious Runic Puzzles to get to him... \n";
 
-    int a = 4;
-    int b = 3;
-    int c = 6;
+    //Declare 3 number code
+    const int a = 4;
+    const int b = 3;
+    const int c = 2;
+ 
+    const int sum = a + b + c;
+    const int product = a * b * c;
 
-    int sum = a + b + c;
-    int product = a * b * c;
-
-    std::cout << sum << std::endl;
-    std::cout << product << std::endl;
+    //Print sum and product to the terminal
+    std::cout << sum << "\n";
+    std::cout << product << "\n";
 
     return 0;
 }
