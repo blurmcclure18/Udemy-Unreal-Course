@@ -1,15 +1,21 @@
 #include <iostream>
 
-void PrintIntro()
+int Difficulty()
+{
+    return 0;
+}
+
+void PrintIntro(int Difficulty)
 {
     //This prints out the first message the player sees
     std::cout << "\n\nYou need to capture the Arcane Wizard at the top of his tower...\n";
-    std::cout << "Unlock the doors in his tower to get to him... \n\n";
+    std::cout << "Unlock the doors in his tower to get to him... \n";
+    std::cout << "You are on Level " << Difficulty << "... Unlock the door to advance to the next level.\n\n";
 }
 
-void PlayGame()
+bool PlayGame(int Difficulty)
 {
-    PrintIntro();
+    PrintIntro(Difficulty);
 
     //Declare 3 number code
     const int RuneA = 4;
@@ -35,20 +41,32 @@ void PlayGame()
     if (GuessSum == RuneSum && GuessProduct == RuneProduct)
     {
         std::cout << "\nThe door opened! \n";
+        return true;
     }
 
     else    
     {
         std::cout << "\nThe door remains locked! \n";
+        return false;
     }
 
 }
 
 int main()
 {
+    int LevelDifficulty = 1;
+
     while (true)
     {
-        PlayGame();
+        bool bLevelComplete = PlayGame(LevelDifficulty);
+        std::cin.clear(); // Clears any errors
+        std::cin.ignore(); // Discards the buffer
+
+        if (bLevelComplete)
+        {
+            ++LevelDifficulty;            
+        }
+        
     }
     return 0;
 }
