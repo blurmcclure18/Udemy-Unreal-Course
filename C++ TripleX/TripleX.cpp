@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 int Difficulty()
 {
@@ -8,7 +9,7 @@ int Difficulty()
 void PrintIntro(int Difficulty)
 {
     //This prints out the first message the player sees
-    std::cout << "\n\nYou need to capture the Arcane Wizard at the top of his tower...\n";
+    std::cout << "\n\nYou need to capture the Evil Wizard at the top of his Tower...\n";
     std::cout << "Unlock the doors in his tower to get to him... \n";
     std::cout << "You are on Level " << Difficulty << "... Unlock the door to advance to the next level.\n\n";
 }
@@ -18,9 +19,9 @@ bool PlayGame(int Difficulty)
     PrintIntro(Difficulty);
 
     //Declare 3 number code
-    const int RuneA = 4;
-    const int RuneB = 3;
-    const int RuneC = 2;
+    const int RuneA = rand() % Difficulty + Difficulty;
+    const int RuneB = rand() % Difficulty + Difficulty;
+    const int RuneC = rand() % Difficulty + Difficulty;
     
     const int RuneSum = RuneA + RuneB + RuneC;
     const int RuneProduct = RuneA * RuneB * RuneC;
@@ -54,9 +55,12 @@ bool PlayGame(int Difficulty)
 
 int main()
 {
-    int LevelDifficulty = 1;
+    srand(time(NULL)); // create new random seed based on time of day
 
-    while (true)
+    int LevelDifficulty = 1;
+    const int MaxDifficulty = 10;
+
+    while (LevelDifficulty <= MaxDifficulty) // Loop game until all levels completed
     {
         bool bLevelComplete = PlayGame(LevelDifficulty);
         std::cin.clear(); // Clears any errors
@@ -68,5 +72,8 @@ int main()
         }
         
     }
+    
+    std::cout << "\n*** You made it to the top of the Tower and Captured the Evil Wizard! ***\n";
+
     return 0;
 }
